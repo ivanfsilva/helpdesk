@@ -1,21 +1,36 @@
 package br.com.ivanfsilva.helpdesk.domain;
 
 import br.com.ivanfsilva.helpdesk.domain.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class Pessoa {
+@Entity(name = "pessoas")
+public abstract class Pessoa implements Serializable {
+    private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String nome;
+
+    @Column(unique = true)
     protected String cpf;
+
+    @Column(unique = true)
     protected String email;
     protected String senha;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "perfis")
     protected Set<Integer> perfis = new HashSet<>();
 
     public Pessoa() {
