@@ -25,7 +25,7 @@ public abstract class Pessoa implements Serializable {
     @Column(unique = true)
     protected String cpf;
 
-    //@Column(unique = true)
+    @Column(unique = true)
     protected String email;
     protected String senha;
 
