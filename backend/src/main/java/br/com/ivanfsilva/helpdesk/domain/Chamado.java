@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "chamados")
 public class Chamado implements Serializable {
     private static final long serialVersionUID = 1L;
 

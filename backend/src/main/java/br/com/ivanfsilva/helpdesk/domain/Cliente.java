@@ -2,12 +2,14 @@ package br.com.ivanfsilva.helpdesk.domain;
 
 import br.com.ivanfsilva.helpdesk.domain.enums.Perfil;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "clientes")
+@DiscriminatorValue("cliente")
 public class Cliente extends Pessoa {
     private static final long serialVersionUID = 1L;
 

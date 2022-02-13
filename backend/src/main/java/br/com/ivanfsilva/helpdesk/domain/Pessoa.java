@@ -11,6 +11,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity(name = "pessoas")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_pessoa",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
