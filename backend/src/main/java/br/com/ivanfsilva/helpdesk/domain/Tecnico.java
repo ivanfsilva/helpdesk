@@ -1,7 +1,7 @@
 package br.com.ivanfsilva.helpdesk.domain;
 
 import br.com.ivanfsilva.helpdesk.domain.enums.Perfil;
-import jdk.jfr.Enabled;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -14,17 +14,18 @@ import java.util.List;
 public class Tecnico extends Pessoa {
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tecnico")
     private List<Chamado> chamados = new ArrayList<>();
 
     public Tecnico() {
         super();
-        addPerfil(Perfil.TECNICO);
+        addPerfil(Perfil.CLIENTE);
     }
 
     public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
         super(id, nome, cpf, email, senha);
-        addPerfil(Perfil.TECNICO);
+        addPerfil(Perfil.CLIENTE);
     }
 
     public List<Chamado> getChamados() {
