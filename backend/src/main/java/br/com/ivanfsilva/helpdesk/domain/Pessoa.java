@@ -35,7 +35,7 @@ public abstract class Pessoa implements Serializable {
     protected LocalDate dataCriacao = LocalDate.now();
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "perfis")
+    @CollectionTable(name = "PERFIS")
     protected Set<Integer> perfis = new HashSet<>();
 
     public Pessoa() {
