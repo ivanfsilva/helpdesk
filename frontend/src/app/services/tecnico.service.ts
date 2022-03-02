@@ -15,4 +15,8 @@ export class TecnicoService {
     // @ts-ignore
     return this.http.get(`${API_CONFIG.baseUrl}/tecnicos`);
   }
+
+  create(tecnico: Tecnico): Observable<Tecnico> {
+    return this.http.post<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos`, tecnico);
+  }
 }
