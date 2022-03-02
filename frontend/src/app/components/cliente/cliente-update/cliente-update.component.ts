@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { TecnicoService } from "../../../services/tecnico.service";
+import { ClienteService } from "../../../services/cliente.service";
 import { ToastrService } from "ngx-toastr";
-import { Tecnico } from "../../../models/tecnico";
+import { Cliente } from "../../../models/cliente";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-cliente-update',
-  templateUrl: './tecnico-update.component.html',
-  styleUrls: ['./tecnico-update.component.css']
+  templateUrl: './cliente-update.component.html',
+  styleUrls: ['./cliente-update.component.css']
 })
-export class TecnicoUpdateComponent implements OnInit {
+export class ClienteUpdateComponent implements OnInit {
 
-  tecnico: Tecnico = {
+  cliente: Cliente = {
     id:         '',
     nome:       '',
     cpf:        '',
@@ -28,28 +28,28 @@ export class TecnicoUpdateComponent implements OnInit {
   senha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
-    private service: TecnicoService,
+    private service: ClienteService,
     private toast:    ToastrService,
     private router:          Router,
     private route:   ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.tecnico.id = this.route.snapshot.paramMap.get('id');
+    this.cliente.id = this.route.snapshot.paramMap.get('id');
     this.findById();
   }
 
   findById(): void {
-    this.service.findById(this.tecnico.id).subscribe(resposta => {
+    this.service.findById(this.cliente.id).subscribe(resposta => {
       resposta.perfis = []
-      this.tecnico = resposta;
+      this.cliente = resposta;
     })
   }
 
   update(): void {
-    this.service.update(this.tecnico).subscribe(() => {
+    this.service.update(this.cliente).subscribe(() => {
       this.toast.success('Técnico atualizado com sucesso', 'Update');
-      this.router.navigate(['tecnicos'])
+      this.router.navigate(['clientes'])
     }, ex => {
       if(ex.error.errors) {
         ex.error.errors.forEach(element => {
@@ -62,10 +62,10 @@ export class TecnicoUpdateComponent implements OnInit {
   }
 
   addPerfil(perfil: any): void {
-    if(this.tecnico.perfis.includes(perfil)) {
-      this.tecnico.perfis.splice(this.tecnico.perfis.indexOf(perfil), 1);
+    if(this.cliente.perfis.includes(perfil)) {
+      this.cliente.perfis.splice(this.cliente.perfis.indexOf(perfil), 1);
     } else {
-      this.tecnico.perfis.push(perfil);
+      this.cliente.perfis.push(perfil);
     }
 
   }
