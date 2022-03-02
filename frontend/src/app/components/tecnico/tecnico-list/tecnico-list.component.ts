@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { Tecnico } from "../../../models/tecnico";
+import { TecnicoService } from "../../../services/tecnico.service";
 
 @Component({
   selector: 'app-tecnico-list',
@@ -25,7 +26,7 @@ export class TecnicoListComponent implements OnInit {
     this.findAll();
   }
 
-  findAll() {
+  findAll(): void {
     this.service.findAll().subscribe(resposta => {
       this.ELEMENT_DATA = resposta
       this.dataSource = new MatTableDataSource<Tecnico>(resposta);
