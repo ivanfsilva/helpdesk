@@ -44,8 +44,4 @@ public class Tecnico extends Pessoa {
     public List<Chamado> getChamados() {
         return chamados;
     }
-
-    public void setChamados(List<Chamado> chamados) {
-        this.chamados = chamados;
-    }
 }

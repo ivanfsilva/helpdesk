@@ -59,10 +59,6 @@ public class Chamado implements Serializable {
         return dataAbertura;
     }
 
-    public void setDataAbertura(LocalDate dataAbertura) {
-        this.dataAbertura = dataAbertura;
-    }
-
     public LocalDate getDataFechamento() {
         return dataFechamento;
     }
