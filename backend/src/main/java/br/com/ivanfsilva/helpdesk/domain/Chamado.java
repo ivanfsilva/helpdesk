@@ -5,6 +5,7 @@ import br.com.ivanfsilva.helpdesk.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -19,6 +20,7 @@ public class Chamado implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
 
+    @Future(message = "A data de fechamento não pode estar no futuro")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
     private Prioridade prioridade;

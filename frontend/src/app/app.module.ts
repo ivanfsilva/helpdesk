@@ -48,6 +48,7 @@ import { ChamadoListComponent } from './components/chamdo/chamado-list/chamado-l
 import { ChamadoCreateComponent } from './components/chamdo/chamado-create/chamado-create.component';
 import { ChamadoUpdateComponent } from './components/chamdo/chamado-update/chamado-update.component';
 import { ChamadoReadComponent } from './components/chamdo/chamado-read/chamado-read.component';
+import { CpfCnpjPipe } from './shared/pipes/cpf-cnpj.pipe';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { ChamadoReadComponent } from './components/chamdo/chamado-read/chamado-r
     ChamadoListComponent,
     ChamadoCreateComponent,
     ChamadoUpdateComponent,
-    ChamadoReadComponent
+    ChamadoReadComponent,
+    CpfCnpjPipe
   ],
   imports: [
     BrowserModule,
