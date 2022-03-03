@@ -1,7 +1,6 @@
 package br.com.ivanfsilva.helpdesk.domain;
 
 import br.com.ivanfsilva.helpdesk.domain.dtos.ClienteDTO;
-import br.com.ivanfsilva.helpdesk.domain.dtos.TecnicoDTO;
 import br.com.ivanfsilva.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
